@@ -2,7 +2,7 @@
  <div>
     <b-pagination
       v-model="currentPage"
-      :total-rows="faculties.length"
+      :total-rows="libraries.length"
       :per-page="perPage"
       aria-controls="image-table"
     ></b-pagination>
@@ -11,7 +11,7 @@
       id="image-table"
       hover
       fixed
-      :items="faculties"
+      :items="libraries"
       :fields="fields"
       small
       :per-page="perPage"
@@ -25,7 +25,7 @@
     </b-table>
     <b-pagination
       v-model="currentPage"
-      :total-rows="faculties.length"
+      :total-rows="libraries.length"
       :per-page="perPage"
       aria-controls="image-table"
     ></b-pagination>
@@ -37,11 +37,11 @@
   import { mapActions, mapState } from 'vuex';
 
   export default {
-    name: "FacultyList",
+    name: "LibraryList",
 
     data() {
       return {
-        fields: ['name', 'dean', 'accredited', 'street', 'startDate'],
+        fields: ['librarian', 'opentime', 'booknumber', 'floor', 'working', 'facultyId'],
         items: [],
         currentPage: 1,
         perPage: 10
@@ -53,7 +53,7 @@
 
     computed: {
       ...mapState([
-        'faculties'
+        'libraries'
       ])
     },
 

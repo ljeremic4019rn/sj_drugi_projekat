@@ -6,6 +6,7 @@ import Register from '@/views/Register.vue';
 import Login from '@/views/Login.vue';
 import Faculty from '@/views/Faculty.vue';
 import Book from '@/views/Book.vue';
+import Library from '@/views/Library.vue';
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/books',
     name: 'Book',
     component: Book
+  },
+  {
+    path: '/libraries',
+    name: 'Library',
+    component: Library
   }
 ]
 

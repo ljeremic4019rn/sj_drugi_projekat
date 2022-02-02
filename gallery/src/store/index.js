@@ -7,7 +7,8 @@ export default new Vuex.Store({
   state: {
     token: '',
     faculties: [],
-    books: []
+    books: [],
+    libraries: []
   },
 
   mutations: {
@@ -27,6 +28,10 @@ export default new Vuex.Store({
 
     setBooks(state, books) {
       state.books = books;
+    },
+
+    setLibraries(state, libraries) {
+      state.libraries = libraries;
     }
 
   },
@@ -85,6 +90,16 @@ export default new Vuex.Store({
     })
         .then( obj => obj.json() )
         .then( res => commit('setBooks', res));
+    },
+    fetchLibraries({ commit }, obj){
+      fetch('http://127.0.0.1:8500/admin/library/all',{
+        headers: {
+          'authorization': `Bearer ${localStorage.token}`
+        },
+        method: 'GET'
+      })
+          .then( obj => obj.json() )
+          .then( res => commit('setLibraries', res));
     }
     
   },

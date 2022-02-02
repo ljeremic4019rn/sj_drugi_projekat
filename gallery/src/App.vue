@@ -20,11 +20,9 @@
               </b-dropdown-item>
             </b-nav-item-dropdown> -->
             
-          <b-nav-item-dropdown text="Faculties" right>
-          <b-dropdown-item href="#">fax 1</b-dropdown-item>
-          <b-dropdown-item href="#">fax 2</b-dropdown-item>
-          <b-dropdown-item href="#">fax 3</b-dropdown-item>
-          <b-dropdown-item href="#">fax 4</b-dropdown-item>
+          <b-nav-item-dropdown text="Categories" right>
+            <b-nav-item to="/faculties">Faculties</b-nav-item>
+            <b-nav-item to="/libraries">Libraries</b-nav-item>
         </b-nav-item-dropdown>
             
           </b-navbar-nav>
