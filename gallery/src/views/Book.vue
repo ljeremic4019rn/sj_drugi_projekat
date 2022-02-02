@@ -1,19 +1,19 @@
 <template>
   <div>
-       <FacultyList />
+       <BookList />
   </div>
 
 </template>
 
 <script>
-  import FacultyList from '@/components/FacultyList.vue';
+  import BookList from '@/components/BookList.vue';
   import { mapActions, mapState } from 'vuex';
 
   export default {
-    name: "Faculty",
+    name: "Book",
 
     components: {
-      FacultyList
+      BookList
     },
 
     data() {
@@ -23,7 +23,7 @@
 
 
     mounted() {
-      this.fetchFacutlies();
+      this.fetchBooks();
       // console.log(this.faculties)
     },
 
@@ -35,7 +35,7 @@
 
     methods: {
       ...mapActions([
-          'fetchFacutlies'
+          'fetchBooks'
       ])
     }
 
