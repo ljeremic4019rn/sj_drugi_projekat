@@ -41,11 +41,8 @@ function authToken(req, res, next) {//ovo je middleware koji proverava da li je 
     if (token == null) return res.redirect(301, '/login');
   
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-    
-        if (err) return res.redirect(301, '/login');
-    
-        req.user = user;
-    
+        if (err) return res.redirect(301, '/login');    
+        req.user = user;    
         next(); 
     });
 }
