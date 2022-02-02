@@ -63,7 +63,7 @@
     //   ]),
 
       rowClicked(record, index) {
-        this.$router.push({ name: 'Single', params: { id: record.objectID } });//todo fix
+        this.$router.push({ name: 'BookList' });//todo fix
       }
     }
 

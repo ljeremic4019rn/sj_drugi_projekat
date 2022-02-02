@@ -28,9 +28,6 @@
     },
 
     computed: {
-      // ...mapState([
-      //   'faculties'
-      // ])
     },
 
     methods: {

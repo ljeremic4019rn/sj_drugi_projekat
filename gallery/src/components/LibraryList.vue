@@ -44,7 +44,10 @@
         fields: ['librarian', 'opentime', 'booknumber', 'floor', 'working', 'facultyId'],
         items: [],
         currentPage: 1,
-        perPage: 10
+        perPage: 10,
+        test :{
+          broj: 3
+        }
       }
     },
 
@@ -58,12 +61,15 @@
     },
 
     methods: {
-    //   ...mapActions([
-    //     'getItem'
-    //   ]),
+      ...mapActions([
+        'getBooksByLibId',
+        'fetchBooks'
+      ]),
 
       rowClicked(record, index) {
-        this.$router.push({ name: 'Single', params: { id: record.objectID } });//todo fix
+        this.$router.push({ name: 'BookList'});//todo fix
+        // console.log(record.id)
+        this.getBooksByLibId(record.id);
       }
     }
 

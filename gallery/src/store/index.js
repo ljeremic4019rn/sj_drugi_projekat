@@ -8,7 +8,9 @@ export default new Vuex.Store({
     token: '',
     faculties: [],
     books: [],
-    libraries: []
+    book: null,
+    libraries: [],
+    selectedBooks: []
   },
 
   mutations: {
@@ -32,6 +34,21 @@ export default new Vuex.Store({
 
     setLibraries(state, libraries) {
       state.libraries = libraries;
+    },
+
+    setBookById(state, book) {
+      state.book = book;
+    },
+
+    selectBooks(state, int) {
+      state.selectedBooks = []
+      state.books.forEach(element => {
+        if (element.libraryId === int){
+          console.log(element)//todo skloni
+          state.selectedBooks.push(element);
+        }
+      });
+      console.log(state.selectedBooks)
     }
 
   },
@@ -100,6 +117,32 @@ export default new Vuex.Store({
       })
           .then( obj => obj.json() )
           .then( res => commit('setLibraries', res));
+    },
+
+    getBooksByLibId({ commit }, int){//todo nece iz prve da pokupi knjige nego mora dva puta da se kativira, saznaj zasto
+      fetch('http://127.0.0.1:8500/admin/book/all',{
+        headers: {
+          'authorization': `Bearer ${localStorage.token}`
+        },
+        method: 'GET'
+      })
+          .then( obj => obj.json() )
+          .then( res => commit('setBooks', res));
+
+      console.log("napunjene knjige opet")
+      commit('selectBooks',int)
+    },
+
+    fetchBookByID({ commit }, id){
+      fetch(`http://127.0.0.1:8500/admin/book/${id}`,{
+        headers: {
+          'authorization': `Bearer ${localStorage.token}`
+        },
+        method: 'GET'
+      })
+          .then( obj => obj.json() )
+          .then( res => commit('setBookById', res) );
+
     }
     
   },

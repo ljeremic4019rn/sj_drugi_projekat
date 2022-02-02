@@ -2,7 +2,7 @@
  <div>
     <b-pagination
       v-model="currentPage"
-      :total-rows="books.length"
+      :total-rows="selectedBooks.length"
       :per-page="perPage"
       aria-controls="image-table"
     ></b-pagination>
@@ -11,7 +11,7 @@
       id="image-table"
       hover
       fixed
-      :items="books"
+      :items="selectedBooks"
       :fields="fields"
       small
       :per-page="perPage"
@@ -25,7 +25,7 @@
     </b-table>
     <b-pagination
       v-model="currentPage"
-      :total-rows="books.length"
+      :total-rows="selectedBooks.length"
       :per-page="perPage"
       aria-controls="image-table"
     ></b-pagination>
@@ -44,7 +44,7 @@
         fields: ['name', 'writer', 'genre', 'desciption', 'relesedate', 'publisher', 'userId'],
         items: [],
         currentPage: 1,
-        perPage: 10
+        perPage: 10,
       }
     },
 
@@ -54,7 +54,8 @@
 
     computed: {
       ...mapState([
-        'books'
+        'books',
+        'selectedBooks'
       ])
     },
 
@@ -64,7 +65,8 @@
     //   ]),
 
       rowClicked(record, index) {
-        this.$router.push({ name: 'Single', params: { id: record.objectID } });//todo fix
+        // this.$router.push({ name: 'Single', params: { id: record.objectID } });//todo fix
+        console.log("prikazi podatke o selektovanoj knjzi")
       }
     }
 

@@ -7,6 +7,7 @@ import Login from '@/views/Login.vue';
 import Faculty from '@/views/Faculty.vue';
 import Book from '@/views/Book.vue';
 import Library from '@/views/Library.vue';
+import SingleBookView from '@/views/SingleBookView.vue';
 
 Vue.use(VueRouter)
 
@@ -38,13 +39,18 @@ const routes = [
   },
   {
     path: '/books',
-    name: 'Book',
+    name: 'BookList',
     component: Book
   },
   {
     path: '/libraries',
     name: 'Library',
     component: Library
+  },
+  {
+    path: '/book/:id',
+    name: 'Book',
+    component: SingleBookView
   }
 ]
 
