@@ -21,19 +21,34 @@ export default new Vuex.Store({
   },
 
   actions: {
+  //   register({ commit }, obj) {
+  //     console.log(obj)
+  //     fetch('http://localhost:9000/register', {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify(obj)
+  //     }).then( res => res.json() )
+  //       .then( tkn => commit('setToken', tkn.token) );
+  //   },
+
     register({ commit }, obj) {
-      fetch('http://127.0.0.1:8000/register', {
+      console.log(obj)
+      fetch('http://localhost:9000/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(obj)
       }).then( res => res.json() )
-        .then( tkn => commit('setToken', tkn.token) );
+          .then( tkn => { 
+            if (tkn.msg) {
+              alert(tkn.msg);
+            } else {
+              console.log(tkn.token)//todo skloni kasnije
+              // commit('setToken', tkn.token)
+            }
+          });
     },
 
     login({ commit }, obj) {
-      console.log("usli smo u login")
-      console.log(obj)
-
       fetch('http://localhost:9000/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -43,8 +58,7 @@ export default new Vuex.Store({
             if (tkn.msg) {
               alert(tkn.msg);
             } else {
-              console.log("nadjen")
-              console.log(tkn.token)
+              console.log(tkn.token)//todo skloni kasnije
               commit('setToken', tkn.token)
             }
           });

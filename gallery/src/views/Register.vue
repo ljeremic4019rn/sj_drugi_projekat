@@ -4,16 +4,16 @@
 
     <b-form @submit="onSubmit">
 
-      <b-form-group label="First name:" label-for="first_name">
-        <b-form-input id="first_name" v-model="form.firstname" placeholder="Enter first name" required></b-form-input>
+      <b-form-group label="First name:" label-for="name">
+        <b-form-input id="name" v-model="form.name" placeholder="Enter name" required></b-form-input>
       </b-form-group>
 
-      <b-form-group label="Last Name:" label-for="last_name">
-        <b-form-input id="last_name" v-model="form.lastname" placeholder="Enter last name" required></b-form-input>
+      <b-form-group label="Last Name:" label-for="lastname">
+        <b-form-input id="lastname" v-model="form.lastname" placeholder="Enter last name" required></b-form-input>
       </b-form-group>
 
-      <b-form-group label="Birthdate:" label-for="birth_date">
-        <b-form-input id="birth_date" v-model="form.birthdate" type = "date" placeholder="Enter birthdate" required></b-form-input>
+      <b-form-group label="Birthdate:" label-for="birthday">
+        <b-form-input id="birthday" v-model="form.birthday" type = "date" placeholder="Enter birthday" required></b-form-input>
       </b-form-group>
       
       <b-form-group label="Email address:" label-for="email">
@@ -32,10 +32,10 @@
         <b-form-input id="facultyId" v-model="form.facultyId" type = "number" placeholder="Enter facultyId" required></b-form-input>
       </b-form-group>
 
-      <b-form-checkbox id="admin" v-model="form.admin" :value="true" :unchecked-value="false">Admin</b-form-checkbox>
+      <!-- <b-form-checkbox id="admin" v-model="form.admin" :value="true" :unchecked-value="false">Admin</b-form-checkbox>
       <b-form-checkbox id="moderator" v-model="form.moderator" :value="true" :unchecked-value="false">Moderator</b-form-checkbox>
       <b-form-checkbox id="student" v-model="form.student" :value="true" :unchecked-value="false">Student</b-form-checkbox>
-      
+       -->
       <br>
       <b-button type="submit" variant="primary">Submit</b-button>
     </b-form>
@@ -58,10 +58,16 @@
     data() {
       return {
         form: {
-          email: '',//!promeni kasnije
           name: '',
+          lastname: '',
+          birthday: '',
+          email: '',
+          username: '',
           password: '',
-          admin: false
+          facultyId: '',
+          admin: "false",
+          moderator: "false",
+          student: "false"
         }
       }
     },
