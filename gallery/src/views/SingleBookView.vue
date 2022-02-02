@@ -1,8 +1,8 @@
 <template>
   <div>
-<!--        <SingleAlbumCard v-if="album" :album="album" />-->
+        <SingleBook v-if="book" :book="book" />
 <!--    <p>{{this.book}}</p>-->
-    <SingleBook />
+<!--    <SingleBook />-->
   </div>
 </template>
 
@@ -14,10 +14,10 @@ export default {
   components: {
     SingleBook
   },
-  data(){
-    return {
-    }
-  },
+  // data(){
+  //   return {
+  //   }
+  // },
 
   computed: {
     ...mapState([

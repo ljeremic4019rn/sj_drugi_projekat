@@ -1,37 +1,47 @@
 <template>
-  <div>
-    <p>{{this.book}}</p>
-
-    <b-form-input v-model="asdfas" type="text" debounce="500"></b-form-input>
-    <b-form-input v-model="value" type="text" debounce="500"></b-form-input>
-
-
-    <b-button href="#" variant="primary">Do something</b-button>
-
+  <div class="d-flex justify-content-center">
+    <div class="row text-center">
+      <b-card
+          :title="book.name"
+          :img-src= 'getUrl()'
+          img-alt="Image"
+          img-top
+          tag="article"
+          style="max-width: 20rem;"
+          class="mb-2"
+      >
+        <h4>{{book.writer}}</h4>
+        <h4>{{book.id}}</h4>
+        <b-card-text>
+          <p id="year">Release date: {{book.relesedate}}</p>
+          <p>Genre: {{book.genre}}</p>
+          <p>Description: {{book.desciption}}</p>
+        </b-card-text>
+      </b-card>
+    </div>
   </div>
+
 </template>
 
 <script>
-import {mapState} from "vuex";
+import {mapActions, mapState} from "vuex";
+import book from "@/views/Book";
 
 export default {
   name: "SingleBook",
 
-  data(){
-    return{
-    }
-  },
-
-  computed: {
-    ...mapState([
-      'book'
-    ])
-  },
-
 
   props: {
+    book: Object
+  },
+  methods: {
+    getUrl(){
+      return `https://picsum.photos/600/300/?image=${this.book.id}`
+    }
   }
+
 }
+
 </script>
 
 <style scoped>

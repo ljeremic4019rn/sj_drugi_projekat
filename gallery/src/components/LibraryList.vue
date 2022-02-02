@@ -67,9 +67,10 @@
       ]),
 
       rowClicked(record, index) {
+        this.getBooksByLibId(record.id);
         this.$router.push({ name: 'BookList'});//todo fix
         // console.log(record.id)
-        this.getBooksByLibId(record.id);
+
       }
     }
 

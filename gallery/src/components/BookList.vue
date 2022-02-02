@@ -65,7 +65,7 @@
     //   ]),
 
       rowClicked(record, index) {
-        // this.$router.push({ name: 'Single', params: { id: record.objectID } });//todo fix
+        this.$router.push({ name: 'Book', params: { id: record.id} });
         console.log("prikazi podatke o selektovanoj knjzi")
       }
     }

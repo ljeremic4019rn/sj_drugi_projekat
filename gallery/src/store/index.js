@@ -42,10 +42,10 @@ export default new Vuex.Store({
 
     selectBooks(state, int) {
       state.selectedBooks = []
-      state.books.forEach(element => {
-        if (element.libraryId === int){
-          console.log(element)//todo skloni
-          state.selectedBooks.push(element);
+      state.books.forEach(book => {
+        if (book.libraryId === int){
+          console.log(book)//todo skloni
+          state.selectedBooks.push(book);
         }
       });
       console.log(state.selectedBooks)
