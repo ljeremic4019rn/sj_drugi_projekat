@@ -17,7 +17,7 @@
           <p>Genre: {{book.genre}}</p>
           <p>Description: {{book.desciption}}</p>
         </b-card-text>
-        <b-button v-on:click="goToEdit()" pill>Edit your donation</b-button>
+        <b-button v-on:click="goToEdit()" pill>Update your donated book</b-button>
       </b-card>
     </div>
   </div>

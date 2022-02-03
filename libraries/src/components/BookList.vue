@@ -25,7 +25,7 @@
       :per-page="perPage"
       aria-controls="image-table"
     ></b-pagination>
-     <b-button :userObj = "{id: 3, test:'asdf'}" to="/addbook">Donate</b-button>
+     <b-button v-on:click="goToAddBook()">Donate</b-button>
   </div>
 </template>
 
@@ -59,6 +59,9 @@
     methods: {
       rowClicked(record, index) {
         this.$router.push({ name: 'Book', params: { id: record.id} });
+      },
+      goToAddBook(){
+        this.$router.push({ name: 'AddBook', params: { id: this.$route.params.id} });
       }
     }
   }

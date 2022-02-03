@@ -28,9 +28,9 @@
         <b-form-input id="publisher" v-model="form.publisher" placeholder="Enter publisher" required></b-form-input>
       </b-form-group>
 
-      <b-form-group label="LibraryId:" label-for="libraryId">
-        <b-form-input id="libraryId" v-model="form.libraryId" type = "number" placeholder="Enter libraryId" required></b-form-input>
-      </b-form-group>
+<!--      <b-form-group label="LibraryId:" label-for="libraryId">-->
+<!--        <b-form-input id="libraryId" v-model="form.libraryId" type = "number" placeholder="Enter libraryId" required></b-form-input>-->
+<!--      </b-form-group>-->
 
       <b-form-group label="UserId:" label-for="userId">
         <b-form-input id="userId" v-model="form.userId" type = "number" placeholder="Enter userId" required></b-form-input>
@@ -90,7 +90,9 @@ export default {
 
     onSubmit(e) {
       e.preventDefault();
+      this.form.libraryId = this.$route.params.id.toString()
       this.addBook(this.form);
+      this.$router.push({ name: 'BookList', params: { id: this.$route.params.id} });
     }
   }
 }

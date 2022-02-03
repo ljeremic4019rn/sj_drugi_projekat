@@ -104,7 +104,7 @@ export default {
     onSubmit(e) {
       e.preventDefault();
       this.updateBook(this.form); //todo update book
-      // this.$router.push({ name: 'Home' });
+       this.$router.push({ name: 'Library' });
     }
   }
 }
