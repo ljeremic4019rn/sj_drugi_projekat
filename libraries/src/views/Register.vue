@@ -43,7 +43,7 @@
   </div>
 </template>
 
-<script>
+<script>//todo vrati chechbox
 
   import Header from '@/components/Header.vue';
   import { mapActions } from 'vuex';

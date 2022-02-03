@@ -206,7 +206,7 @@ export default new Vuex.Store({
       commit('setLibraryByFacultyId', facId);
     },
     addBook({ commit }, obj){
-        fetch('http://127.0.0.1:8500/admin/book/', {
+        fetch('http://127.0.0.1:8500/admin/book/', {//todo formatiraj datum nakon sto ga importujes, za svaki
           method: 'POST',
           headers: {
             'Content-Type': 'application/json' ,

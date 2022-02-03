@@ -38,7 +38,7 @@
 
     data() {
       return {
-        fields: ['name', 'writer', 'genre', 'desciption', 'relesedate', 'publisher', 'userId'],
+        fields: ['name', 'writer', 'genre', 'desciption', 'relesedate', 'publisher', {key: 'userId', label: 'Donator'}],
         items: [],
         currentPage: 1,
         perPage: 10,
