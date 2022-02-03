@@ -1,12 +1,5 @@
 <template>
  <div>
-    <b-pagination
-      v-model="currentPage"
-      :total-rows="libraries.length"
-      :per-page="perPage"
-      aria-controls="image-table"
-    ></b-pagination>
-
     <b-table
       id="image-table"
       hover
