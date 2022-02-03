@@ -6,7 +6,7 @@
       <b-col class = "box">Book number: {{library.booknumber}}</b-col>
       <b-col class = "box">Floor number: {{library.floor}}</b-col>
       <b-col class = "box">Currently working: {{library.working}}</b-col>
-      <b-button v-on:="goToLib()" >Go to library</b-button>
+      <b-button v-on:click="goToLib()" >Go to library</b-button>
     </b-row>
 
   </b-container>
@@ -23,7 +23,7 @@ export default {
 
   methods: {
     goToLib(){
-      this.$router.push({ name: 'BookList', params: { id: library[0].id} });
+      this.$router.push({ name: 'BookList', params: { id: this.library.id} });
     }
   },
 
