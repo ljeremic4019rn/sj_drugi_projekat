@@ -9,6 +9,7 @@ import Book from '@/views/Book.vue';
 import Library from '@/views/Library.vue';
 import SingleBookView from '@/views/SingleBookView.vue';
 import SingleFacultyView from "@/views/SingleFacultyView";
+import AddBook from "@/views/AddBook";
 
 Vue.use(VueRouter)
 
@@ -37,6 +38,11 @@ const routes = [
     path: '/faculties',
     name: 'Faculty',
     component: Faculty
+  },
+  {
+    path: '/addbook',
+    name: 'AddBook',
+    component: AddBook
   },
   {
     path: '/books/:id',//ovo je id biblioteke, jer mi treba kako bi filtrirao

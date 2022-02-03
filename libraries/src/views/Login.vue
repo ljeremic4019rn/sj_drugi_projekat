@@ -46,7 +46,7 @@
         e.preventDefault();
 
         this.login(this.form);
-       this.$router.push({ name: 'Home' });//todo vrati nazad
+       this.$router.push({ name: 'Home' });
       }
     }
   }

@@ -18,7 +18,10 @@
       :per-page="perPage"
       aria-controls="image-table"
     ></b-pagination>
-  </div>
+
+
+
+ </div>
 </template>
 
 <script>
@@ -56,7 +59,7 @@
       ]),
 
       rowClicked(record, index) {
-   //     this.getBooksByLibId(record.id);//todo mora iz dva puta, prvi put nece da prikaze knjige
+   //     this.getBooksByLibId(record.id);
         // this.$router.push({ name: 'BookList'});
         this.$router.push({ name: 'BookList', params: { id: record.id} });
 

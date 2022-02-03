@@ -18,10 +18,6 @@
       :current-page="currentPage"
       @row-clicked="rowClicked"
     >
-      <!-- <template #cell(isHighlight)="data">
-        <b-icon v-if="data.value" icon="check-square" variant="success" scale="2"></b-icon>
-        <b-icon v-else icon="x-circle" variant="danger" scale="2"></b-icon>
-      </template> -->
     </b-table>
     <b-pagination
       v-model="currentPage"
@@ -29,6 +25,7 @@
       :per-page="perPage"
       aria-controls="image-table"
     ></b-pagination>
+   <b-button to="/addbook">Donate</b-button>
   </div>
 </template>
 

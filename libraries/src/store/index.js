@@ -80,7 +80,7 @@ export default new Vuex.Store({
             if (tkn.msg) {
               alert(tkn.msg);
             } else {
-              console.log(tkn.token)//todo skloni kasnije
+              // console.log(tkn.token)
               commit('setToken', tkn.token)
             }
           });
@@ -96,7 +96,7 @@ export default new Vuex.Store({
             if (tkn.msg) {
               alert(tkn.msg);
             } else {
-              console.log(tkn.token)//todo skloni kasnije
+              // console.log(tkn.token)
               commit('setToken', tkn.token)
             }
           });
@@ -180,6 +180,23 @@ export default new Vuex.Store({
 
       commit('setLibraryByFacultyId', facId);
     },
+    addBook({ commit }, obj){
+        fetch('http://127.0.0.1:8500/admin/book/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json' ,
+            'authorization': `Bearer ${localStorage.token}`
+          },
+          body: JSON.stringify(obj)
+        }).then( res => res.json() )
+            .then( el => {
+              if (el.msg) {
+                alert(el.msg, 'ovo je error msg');
+              }
+            });
+
+    }
+
     
   },
 

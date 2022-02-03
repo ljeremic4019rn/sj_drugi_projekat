@@ -17,13 +17,14 @@
           <p>Genre: {{book.genre}}</p>
           <p>Description: {{book.desciption}}</p>
         </b-card-text>
+        <b-button v-if="" pill>Edit your donation</b-button>
       </b-card>
     </div>
   </div>
 
 </template>
 
-<script>
+<script>//todo dodaj funkcionalnost dugmeta
 export default {
   name: "SingleBook",
 
