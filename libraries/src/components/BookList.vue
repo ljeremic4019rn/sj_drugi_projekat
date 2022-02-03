@@ -45,11 +45,6 @@
       }
     },
 
-    mounted() {
-
-    },
-
-
     computed: {
       ...mapState([
         'books',
@@ -66,8 +61,6 @@
         this.$router.push({ name: 'Book', params: { id: record.id} });
       }
     }
-
-
   }
 </script>
 

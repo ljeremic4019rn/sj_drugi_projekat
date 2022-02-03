@@ -47,7 +47,6 @@
 
 import Header from '@/components/Header.vue';
 import { mapActions, mapState } from 'vuex';
-import dateFormat, { masks } from "dateformat";
 
 export default {
   name: 'UpdateBook',
