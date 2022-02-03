@@ -58,14 +58,10 @@
     },
 
     methods: {
-    //   ...mapActions([
-    //     'getItem'
-    //   ]),
-
       rowClicked(record, index) {
         this.$router.push({ name: 'SingleFaculty', params: { id: record.id} });
-
       }
+
     }
 
 

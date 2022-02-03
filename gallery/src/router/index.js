@@ -39,7 +39,7 @@ const routes = [
     component: Faculty
   },
   {
-    path: '/books',
+    path: '/books/:id',//ovo je id biblioteke, jer mi treba kako bi filtrirao
     name: 'BookList',
     component: Book
   },

@@ -2,7 +2,7 @@
  <div>
     <b-pagination
       v-model="currentPage"
-      :total-rows="selectedBooks.length"
+      :total-rows="filteredBooks.length"
       :per-page="perPage"
       aria-controls="image-table"
     ></b-pagination>
@@ -11,7 +11,7 @@
       id="image-table"
       hover
       fixed
-      :items="selectedBooks"
+      :items="filteredBooks"
       :fields="fields"
       small
       :per-page="perPage"
@@ -25,7 +25,7 @@
     </b-table>
     <b-pagination
       v-model="currentPage"
-      :total-rows="selectedBooks.length"
+      :total-rows="filteredBooks.length"
       :per-page="perPage"
       aria-controls="image-table"
     ></b-pagination>
@@ -34,7 +34,7 @@
 
 <script>
 
-  import { mapActions, mapState } from 'vuex';
+  import { mapActions, mapState } from 'vuex'; //this.$route.params.id
 
   export default {
     name: "FacultyList",
@@ -55,18 +55,15 @@
     computed: {
       ...mapState([
         'books',
-        'selectedBooks'
-      ])
+      ]),
+      filteredBooks: function () {
+        return this.books.filter(book => book.libraryId === this.$route.params.id);
+      }
     },
 
     methods: {
-    //   ...mapActions([
-    //     'getItem'
-    //   ]),
-
       rowClicked(record, index) {
         this.$router.push({ name: 'Book', params: { id: record.id} });
-        console.log("prikazi podatke o selektovanoj knjzi")
       }
     }
 

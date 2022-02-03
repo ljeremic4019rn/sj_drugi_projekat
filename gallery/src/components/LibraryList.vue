@@ -11,10 +11,6 @@
       :current-page="currentPage"
       @row-clicked="rowClicked"
     >
-      <!-- <template #cell(isHighlight)="data">
-        <b-icon v-if="data.value" icon="check-square" variant="success" scale="2"></b-icon>
-        <b-icon v-else icon="x-circle" variant="danger" scale="2"></b-icon>
-      </template> -->
     </b-table>
     <b-pagination
       v-model="currentPage"
@@ -55,13 +51,15 @@
 
     methods: {
       ...mapActions([
-        'getBooksByLibId',
+       // 'getBooksByLibId',
         'fetchBooks'
       ]),
 
       rowClicked(record, index) {
-        this.getBooksByLibId(record.id);//todo mora iz dva puta, prvi put nece da prikaze knjige
-        this.$router.push({ name: 'BookList'});
+   //     this.getBooksByLibId(record.id);//todo mora iz dva puta, prvi put nece da prikaze knjige
+        // this.$router.push({ name: 'BookList'});
+        this.$router.push({ name: 'BookList', params: { id: record.id} });
+
       }
     }
 

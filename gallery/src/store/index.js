@@ -11,7 +11,8 @@ export default new Vuex.Store({
     books: [],
     book: null,
     libraries: [],
-    selectedBooks: []
+    library: [],
+    //selectedBooks: []
   },
 
   mutations: {
@@ -45,16 +46,25 @@ export default new Vuex.Store({
       state.faculty = faculty;
     },
 
-    selectBooks(state, int) {
-      state.selectedBooks = []
-      state.books.forEach(book => {
-        if (book.libraryId === int){
-          console.log(book)//todo skloni
-          state.selectedBooks.push(book);
+    setLibraryByFacultyId(state, facId) {
+      state.library = ''
+      state.libraries.forEach(library => {
+        if (library.facultyId === facId){
+          state.library = library;
         }
       });
-      console.log(state.selectedBooks)
+      // console.log(state.library)
     }
+
+    // selectBooks(state, int) {
+    //   state.selectedBooks = []
+    //   state.books.forEach(book => {
+    //     if (book.libraryId === int){
+    //       state.selectedBooks.push(book);
+    //     }
+    //   });
+    //   // console.log(state.selectedBooks)
+    // }
 
   },
 
@@ -124,19 +134,18 @@ export default new Vuex.Store({
           .then( res => commit('setLibraries', res));
     },
 
-    getBooksByLibId({ commit }, int){//todo nece iz prve da pokupi knjige nego mora dva puta da se kativira, saznaj zasto
-      fetch('http://127.0.0.1:8500/admin/book/all',{
-        headers: {
-          'authorization': `Bearer ${localStorage.token}`
-        },
-        method: 'GET'
-      })
-          .then( obj => obj.json() )
-          .then( res => commit('setBooks', res));
-
-      console.log("napunjene knjige opet")
-      commit('selectBooks',int)
-    },
+    // getBooksByLibId({ commit }, int){
+    //   fetch('http://127.0.0.1:8500/admin/book/all',{
+    //     headers: {
+    //       'authorization': `Bearer ${localStorage.token}`
+    //     },
+    //     method: 'GET'
+    //   })
+    //       .then( obj => obj.json() )
+    //       .then( res => commit('setBooks', res));
+    //
+    //   commit('selectBooks',int);
+    // },
 
     fetchBookByID({ commit }, id){
       fetch(`http://127.0.0.1:8500/admin/book/${id}`,{
@@ -158,7 +167,19 @@ export default new Vuex.Store({
       })
           .then( obj => obj.json() )
           .then( res => commit('setFacultyById', res) );
-    }
+    },
+    fetchLibraryByFacultyId({ commit }, facId){
+      fetch('http://127.0.0.1:8500/admin/library/all',{
+        headers: {
+          'authorization': `Bearer ${localStorage.token}`
+        },
+        method: 'GET'
+      })
+          .then( obj => obj.json() )
+          .then( res => commit('setLibraries', res));
+
+      commit('setLibraryByFacultyId', facId);
+    },
     
   },
 
