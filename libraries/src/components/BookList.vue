@@ -34,7 +34,7 @@
 
 <script>
 
-  import { mapActions, mapState } from 'vuex'; //this.$route.params.id
+  import { mapActions, mapState } from 'vuex';
 
   export default {
     name: "FacultyList",
@@ -49,6 +49,7 @@
     },
 
     mounted() {
+
     },
 
 
@@ -57,7 +58,9 @@
         'books',
       ]),
       filteredBooks: function () {
-        return this.books.filter(book => book.libraryId === this.$route.params.id);
+        let sb = []
+        console.log()
+        return this.books.filter(book => book.libraryId == this.$route.params.id); //mora da bude == umesto ===, jer inace nece da ih nadje kada se uradi drugi put
       }
     },
 
