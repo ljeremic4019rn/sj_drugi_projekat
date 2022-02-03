@@ -1,11 +1,11 @@
 <template>
   <div id="app"  v-if="this.token">
-    <Header subtitle="Donate book"/>
+    <Header subtitle="Update book"/>
 
     <b-form @submit="onSubmit">
 
       <b-form-group label="Book name:" label-for="bookname">
-        <b-form-input id="bookname" v-model="form.name" placeholder="Enter name" required></b-form-input>
+        <b-form-input id="bookname"  v-model="form.name" placeholder="Enter name" required></b-form-input>
       </b-form-group>
 
       <b-form-group label="Writer:" label-for="writer">
@@ -17,7 +17,7 @@
       </b-form-group>
 
       <b-form-group label="Relesedate:" label-for="relesedate">
-        <b-form-input id="relesedate" v-model="form.relesedate" type = "date" placeholder="Enter relesedate" required></b-form-input>
+        <b-form-input id="relesedate" v-model="form.relesedate"  placeholder="Enter relesedate" required></b-form-input>
       </b-form-group>
 
       <b-form-group label="Desciption:" label-for="desciption">
@@ -39,7 +39,6 @@
       <br>
       <b-button type="submit" variant="primary">Submit</b-button>
     </b-form>
-
   </div>
   <p v-else>You must be signed in to leave a comment</p>
 </template>
@@ -47,10 +46,11 @@
 <script>
 
 import Header from '@/components/Header.vue';
-import {mapActions, mapState} from "vuex";
+import { mapActions, mapState } from 'vuex';
+import dateFormat, { masks } from "dateformat";
 
 export default {
-  name: 'AddBook',
+  name: 'UpdateBook',
 
   components: {
     Header
@@ -63,6 +63,7 @@ export default {
   data() {
     return {
       form: {
+        id: '',
         name: '',
         writer: '',
         genre: '',
@@ -70,27 +71,41 @@ export default {
         relesedate: '',
         publisher: '',
         libraryId: '',
-        userId: '',
-
+        userId: ''
       }
     }
   },
 
+
   computed: {
     ...mapState([
       'token',
+      'bookInfo',
     ])
   },
 
+  mounted() {
+    this.form.id = this.bookInfo.id.toString(),
+    this.form.name = this.bookInfo.name,
+    this.form.writer= this.bookInfo.writer,
+    this.form.genre= this.bookInfo.genre,
+    this.form.desciption= this.bookInfo.desciption,
+    this.form.relesedate= this.bookInfo.relesedate,
+    this.form.publisher= this.bookInfo.publisher,
+    this.form.libraryId= this.bookInfo.libraryId.toString(),
+    this.form.userId= this.bookInfo.userId.toString()
+
+  },
 
   methods: {
     ...mapActions([
-      'addBook'
+      'updateBook'
     ]),
 
     onSubmit(e) {
       e.preventDefault();
-      this.addBook(this.form);
+      this.updateBook(this.form); //todo update book
+      // this.$router.push({ name: 'Home' });
     }
   }
 }

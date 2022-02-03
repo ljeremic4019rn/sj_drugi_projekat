@@ -17,7 +17,7 @@
           <p>Genre: {{book.genre}}</p>
           <p>Description: {{book.desciption}}</p>
         </b-card-text>
-        <b-button v-if="" pill>Edit your donation</b-button>
+        <b-button v-on:click="goToEdit()" pill>Edit your donation</b-button>
       </b-card>
     </div>
   </div>
@@ -25,6 +25,8 @@
 </template>
 
 <script>//todo dodaj funkcionalnost dugmeta
+import {mapActions, mapState, mapMutations} from "vuex";
+
 export default {
   name: "SingleBook",
 
@@ -32,9 +34,36 @@ export default {
   props: {
     book: Object
   },
+
+  computed: {
+    ...mapState([
+      'bookInfo',
+    ])
+  },
+
+
   methods: {
+    ...mapMutations([
+        "setBookInfo"
+    ]),
     getUrl(){
       return `https://picsum.photos/600/300/?image=${this.book.id}`
+    },
+    goToEdit(record, index) {
+
+
+      this.setBookInfo({
+        id: this.book.id,
+        name: this.book.name,
+        writer: this.book.writer,
+        genre: this.book.genre,
+        desciption: this.book.desciption,
+        relesedate: this.book.relesedate,
+        publisher: this.book.publisher,
+        libraryId: this.book.libraryId,
+        userId: this.book.userId,
+      })
+      this.$router.push({ name: 'UpdateBook'});
     }
   }
 

@@ -25,7 +25,7 @@
       :per-page="perPage"
       aria-controls="image-table"
     ></b-pagination>
-   <b-button to="/addbook">Donate</b-button>
+     <b-button :userObj = "{id: 3, test:'asdf'}" to="/addbook">Donate</b-button>
   </div>
 </template>
 

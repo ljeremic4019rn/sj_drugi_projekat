@@ -12,6 +12,17 @@ export default new Vuex.Store({
     book: null,
     libraries: [],
     library: [],
+    bookInfo: {
+      id: '',
+      name: '',
+      writer: '',
+      genre: '',
+      desciption: '',
+      relesedate: '',
+      publisher: '',
+      libraryId: '',
+      userId: ''
+    }
     //selectedBooks: []
   },
 
@@ -24,6 +35,20 @@ export default new Vuex.Store({
     removeToken(state) {
       state.token = '';
       localStorage.token = '';
+    },
+
+    setBookInfo(state, book){
+      state.bookInfo.id= book.id,
+      state.bookInfo.name= book.name,
+      state.bookInfo.writer= book.writer,
+      state.bookInfo.genre= book.genre,
+      state.bookInfo.desciption= book.desciption,
+      state.bookInfo.relesedate= book.relesedate,
+      state.bookInfo.publisher= book.publisher,
+      state.bookInfo.libraryId= book.libraryId,
+      state.bookInfo.userId= book.userId
+
+      console.log()
     },
 
     setFaculties(state, faculties) {
@@ -194,7 +219,21 @@ export default new Vuex.Store({
                 alert(el.msg, 'ovo je error msg');
               }
             });
-
+    },
+    updateBook({ commit }, obj){
+      fetch(`http://127.0.0.1:8500/admin/book/${obj.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json' ,
+          'authorization': `Bearer ${localStorage.token}`
+        },
+        body: JSON.stringify(obj)
+      }).then( res => res.json() )
+          .then( el => {
+            if (el.msg) {
+              alert(el.msg, 'ovo je error msg');
+            }
+          });
     }
 
     
