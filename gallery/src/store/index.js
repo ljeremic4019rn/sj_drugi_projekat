@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     token: '',
     faculties: [],
+    faculty: null,
     books: [],
     book: null,
     libraries: [],
@@ -38,6 +39,10 @@ export default new Vuex.Store({
 
     setBookById(state, book) {
       state.book = book;
+    },
+
+    setFacultyById(state, faculty) {
+      state.faculty = faculty;
     },
 
     selectBooks(state, int) {
@@ -142,7 +147,17 @@ export default new Vuex.Store({
       })
           .then( obj => obj.json() )
           .then( res => commit('setBookById', res) );
+    },
 
+    fetchFacultyByID({ commit }, id){
+      fetch(`http://127.0.0.1:8500/admin/faculty/${id}`,{
+        headers: {
+          'authorization': `Bearer ${localStorage.token}`
+        },
+        method: 'GET'
+      })
+          .then( obj => obj.json() )
+          .then( res => commit('setFacultyById', res) );
     }
     
   },

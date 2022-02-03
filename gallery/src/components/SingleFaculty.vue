@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-center">
     <div class="row text-center">
       <b-card
-          :title="book.name"
+          :title="faculty.name"
           :img-src= 'getUrl()'
           img-alt="Image"
           img-top
@@ -10,12 +10,11 @@
           style="max-width: 300rem;"
           class="mb-2"
       >
-        <h4>{{book.writer}}</h4>
-        <h4>{{book.id}}</h4>
+        <h4>{{faculty.dean}}</h4>
         <b-card-text>
-          <p id="year">Release date: {{book.relesedate}}</p>
-          <p>Genre: {{book.genre}}</p>
-          <p>Description: {{book.desciption}}</p>
+          <p id="year">Accredited: {{faculty.accredited}}</p>
+          <p>street: {{faculty.street}}</p>
+          <p>School start: {{faculty.startDate}}</p>
         </b-card-text>
       </b-card>
     </div>
@@ -25,15 +24,15 @@
 
 <script>
 export default {
-  name: "SingleBook",
+  name: "SingleFaculty",
 
 
   props: {
-    book: Object
+    faculty: Object
   },
   methods: {
     getUrl(){
-      return `https://picsum.photos/600/300/?image=${this.book.id}`
+      return `https://picsum.photos/600/300/?image=${this.faculty.id * 10}`
     }
   }
 

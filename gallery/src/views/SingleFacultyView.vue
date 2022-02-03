@@ -1,16 +1,16 @@
 <template>
   <div>
-        <SingleBook v-if="book" :book="book" />
+    <SingleFaculty v-if="faculty" :faculty="faculty" />
   </div>
 </template>
 
 <script>
-import SingleBook from "@/components/SingleBook";
 import {mapActions, mapState} from "vuex";
+import SingleFaculty from "@/components/SingleFaculty";
 export default {
-  name: "SingleBookView",
+  name: "SingleFacultyView",
   components: {
-    SingleBook
+    SingleFaculty
   },
   // data(){
   //   return {
@@ -19,16 +19,16 @@ export default {
 
   computed: {
     ...mapState([
-      'book'
+      'faculty'
     ])
   },
   methods: {
     ...mapActions([
-      'fetchBookByID'
+      'fetchFacultyByID'
     ])
   },
   mounted() {
-    this.fetchBookByID(this.$route.params.id)
+    this.fetchFacultyByID(this.$route.params.id)
   }
 }
 </script>

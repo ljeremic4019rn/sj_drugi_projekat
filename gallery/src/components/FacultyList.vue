@@ -63,7 +63,8 @@
     //   ]),
 
       rowClicked(record, index) {
-        this.$router.push({ name: 'BookList' });//todo fix
+        this.$router.push({ name: 'SingleFaculty', params: { id: record.id} });
+
       }
     }
 

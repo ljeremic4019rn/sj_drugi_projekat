@@ -8,6 +8,7 @@ import Faculty from '@/views/Faculty.vue';
 import Book from '@/views/Book.vue';
 import Library from '@/views/Library.vue';
 import SingleBookView from '@/views/SingleBookView.vue';
+import SingleFacultyView from "@/views/SingleFacultyView";
 
 Vue.use(VueRouter)
 
@@ -51,6 +52,11 @@ const routes = [
     path: '/book/:id',
     name: 'Book',
     component: SingleBookView
+  },
+  {
+    path: '/faculty/:id',
+    name: 'SingleFaculty',
+    component: SingleFacultyView
   }
 ]
 

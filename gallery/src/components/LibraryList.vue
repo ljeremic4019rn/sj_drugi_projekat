@@ -67,10 +67,8 @@
       ]),
 
       rowClicked(record, index) {
-        this.getBooksByLibId(record.id);
-        this.$router.push({ name: 'BookList'});//todo fix
-        // console.log(record.id)
-
+        this.getBooksByLibId(record.id);//todo mora iz dva puta, prvi put nece da prikaze knjige
+        this.$router.push({ name: 'BookList'});
       }
     }
 
