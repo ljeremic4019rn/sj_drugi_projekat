@@ -38,6 +38,7 @@ export default {
   computed: {
     ...mapState([
       'bookInfo',
+      'loggedUserId'
     ])
   },
 
@@ -51,19 +52,23 @@ export default {
     },
     goToEdit(record, index) {
 
-
-      this.setBookInfo({
-        id: this.book.id,
-        name: this.book.name,
-        writer: this.book.writer,
-        genre: this.book.genre,
-        desciption: this.book.desciption,
-        relesedate: this.book.relesedate,
-        publisher: this.book.publisher,
-        libraryId: this.book.libraryId,
-        userId: this.book.userId,
-      })
-      this.$router.push({ name: 'UpdateBook'});
+      if (this.loggedUserId == this.book.userId){
+        this.setBookInfo({
+          id: this.book.id,
+          name: this.book.name,
+          writer: this.book.writer,
+          genre: this.book.genre,
+          desciption: this.book.desciption,
+          relesedate: this.book.relesedate,
+          publisher: this.book.publisher,
+          libraryId: this.book.libraryId,
+          userId: this.book.userId,
+        })
+        this.$router.push({ name: 'UpdateBook'});
+      }
+      else{
+        alert("You must be logged in as a donator to edit this book")
+      }
     }
   }
 

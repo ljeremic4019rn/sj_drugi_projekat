@@ -32,9 +32,9 @@
 <!--        <b-form-input id="libraryId" v-model="form.libraryId" type = "number" placeholder="Enter libraryId" required></b-form-input>-->
 <!--      </b-form-group>-->
 
-      <b-form-group label="UserId:" label-for="userId">
-        <b-form-input id="userId" v-model="form.userId" type = "number" :state="userIdState" placeholder="Enter userId" required></b-form-input>
-      </b-form-group>
+<!--      <b-form-group label="UserId:" label-for="userId">-->
+<!--        <b-form-input id="userId" v-model="form.userId" type = "number" :state="userIdState" placeholder="Enter userId" required></b-form-input>-->
+<!--      </b-form-group>-->
 
       <b-alert v-model="showDismissibleAlert" variant="danger" dismissible>
         Please fill in all the fields correctly!
@@ -84,6 +84,7 @@ export default {
   computed: {
     ...mapState([
       'token',
+      'loggedUserId'
     ]),
     nameState() {
       return (this.form.name.length >= 4 && this.form.name.length <= 15)
@@ -99,10 +100,10 @@ export default {
     },
     publisherState() {
       return (this.form.publisher.length >= 4 && this.form.publisher.length <= 15)
-    },
-    userIdState() {
-      return this.form.userId.length > 0
-    },
+    }
+    // userIdState() {
+    //   return this.form.userId.length > 0
+    // },
   },
 
 
@@ -113,10 +114,13 @@ export default {
 
     onSubmit(e) {
       e.preventDefault();
-      if (this.nameState && this.writerState && this.genreState && this.desciptionState && this.publisherState && this.userIdState){
+      if (this.nameState && this.writerState && this.genreState && this.desciptionState && this.publisherState){
         this.form.libraryId = this.$route.params.id.toString()
-        this.addBook(this.form);
-        this.$router.back();
+        this.form.userId = this.loggedUserId.toString()
+        this.$socket.emit('addbook', { body: this.form, token: this.token });
+
+        // this.addBook(this.form);
+        // this.$router.back();
       }
       else
         this.showDismissibleAlert = true

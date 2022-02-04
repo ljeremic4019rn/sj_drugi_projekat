@@ -40,7 +40,7 @@
       <b-button type="submit" variant="primary">Submit</b-button>
     </b-form>
   </div>
-  <p v-else>You must be signed in to leave a comment</p>
+  <p v-else>You must be signed in to update your book</p>
 </template>
 
 <script>

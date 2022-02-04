@@ -72,6 +72,7 @@ export default {
     logout(){
       this.removeToken();
     }
+
   }
 }
 </script>

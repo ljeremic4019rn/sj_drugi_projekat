@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-import VueSweetalert2 from 'vue-sweetalert2';
+import VueSocketIO from 'vue-socket.io';
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -13,8 +13,15 @@ import store from './store'
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
-Vue.use(VueSweetalert2);
 
+Vue.use(new VueSocketIO({//podesavanja za server
+  debug: false,
+  connection: 'ws://127.0.0.1:8000',//gde se nalazi back-end socket server
+  vuex: {
+    store,
+    actionPrefix: 'socket_',
+  }
+}));
 
 Vue.config.productionTip = false
 

@@ -21,7 +21,7 @@ export default new Vuex.Store({
       relesedate: '',
       publisher: '',
       libraryId: '',
-      userId: ''
+      loggedUserId: ''
     }
     //selectedBooks: []
   },
@@ -35,6 +35,10 @@ export default new Vuex.Store({
     removeToken(state) {
       state.token = '';
       localStorage.token = '';
+    },
+
+    setLoggedUserId(state, userId){
+      state.loggedUserId = userId;
     },
 
     setBookInfo(state, book){
@@ -65,6 +69,15 @@ export default new Vuex.Store({
 
     setBookById(state, book) {
       state.book = book;
+    },
+
+    addBook(state, book) {
+      state.book = book;
+    },
+
+    addOneBook(state, book){
+      state.books.push(book);
+      console.log(state.books)
     },
 
     setFacultyById(state, faculty) {
@@ -122,7 +135,9 @@ export default new Vuex.Store({
               alert(tkn.msg);
             } else {
               // console.log(tkn.token)
+              console.log(tkn.userId)
               commit('setToken', tkn.token)
+              commit('setLoggedUserId', tkn.userId)
             }
           });
     },
@@ -234,11 +249,15 @@ export default new Vuex.Store({
               alert(el.msg, 'ovo je error msg');
             }
           });
+    },
+
+    socket_addbook({ commit }, bookToAdd) {//todo popravi  ga
+      const book = JSON.parse(bookToAdd);
+      console.log(book)
+       commit('addOneBook', bookToAdd);
     }
 
     
-  },
-
-  modules: {
   }
+
 })
