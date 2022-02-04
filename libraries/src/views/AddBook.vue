@@ -52,7 +52,6 @@
 
 import Header from '@/components/Header.vue';
 import {mapActions, mapState} from "vuex";
-import VueSweetalert2 from 'vue-sweetalert2';
 
 
 export default {
