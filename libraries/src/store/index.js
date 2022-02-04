@@ -135,7 +135,7 @@ export default new Vuex.Store({
               alert(tkn.msg);
             } else {
               // console.log(tkn.token)
-              console.log(tkn.userId)
+              // console.log(tkn.userId)
               commit('setToken', tkn.token)
               commit('setLoggedUserId', tkn.userId)
             }
