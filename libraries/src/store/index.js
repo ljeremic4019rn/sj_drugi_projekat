@@ -216,7 +216,7 @@ export default new Vuex.Store({
       commit('setLibraryByFacultyId', facId);
     },
     addBook({ commit }, obj){
-        fetch('http://127.0.0.1:8500/admin/book/', {//todo formatiraj datum nakon sto ga importujes, za svaki
+        fetch('http://127.0.0.1:8500/admin/book/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json' ,
@@ -246,13 +246,13 @@ export default new Vuex.Store({
           });
     },
 
-    socket_addbook({ commit }, bookToAdd) {//todo popravi  ga
-      const book = JSON.parse(bookToAdd);
-      // console.log(book)
-       commit('addOneBook', bookToAdd);
-    },
+    // socket_addbook({ commit }, bookToAdd) { //bilo originalno korisceno onda se koristi ovaj ispod
+    //   const book = JSON.parse(bookToAdd);
+    //   // console.log(book)
+    //    commit('addOneBook', bookToAdd);
+    // },
 
-    socket_updateBook({ commit }, book) {//todo popravi  ga
+    socket_updateBook({ commit }, book) {
       const bookNew = JSON.parse(book);
       console.log("nadajmo se knjiga")
       // console.log(bookNew)
