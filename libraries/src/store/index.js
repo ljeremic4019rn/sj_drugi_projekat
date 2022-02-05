@@ -92,17 +92,12 @@ export default new Vuex.Store({
         }
       });
       // console.log(state.library)
+    },
+
+    setSelectedBook(state, book){
+      state.book = book;
     }
 
-    // selectBooks(state, int) {
-    //   state.selectedBooks = []
-    //   state.books.forEach(book => {
-    //     if (book.libraryId === int){
-    //       state.selectedBooks.push(book);
-    //     }
-    //   });
-    //   // console.log(state.selectedBooks)
-    // }
 
   },
 
@@ -253,8 +248,15 @@ export default new Vuex.Store({
 
     socket_addbook({ commit }, bookToAdd) {//todo popravi  ga
       const book = JSON.parse(bookToAdd);
-      console.log(book)
+      // console.log(book)
        commit('addOneBook', bookToAdd);
+    },
+
+    socket_updateBook({ commit }, book) {//todo popravi  ga
+      const bookNew = JSON.parse(book);
+      console.log("nadajmo se knjiga")
+      // console.log(bookNew)
+      commit('setSelectedBook', bookNew);
     }
 
     

@@ -32,10 +32,10 @@
         <b-form-input id="facultyId" v-model="form.facultyId" type = "number" placeholder="Enter facultyId" required></b-form-input>
       </b-form-group>
 
-      <!-- <b-form-checkbox id="admin" v-model="form.admin" :value="true" :unchecked-value="false">Admin</b-form-checkbox>
-      <b-form-checkbox id="moderator" v-model="form.moderator" :value="true" :unchecked-value="false">Moderator</b-form-checkbox>
-      <b-form-checkbox id="student" v-model="form.student" :value="true" :unchecked-value="false">Student</b-form-checkbox>
-       -->
+      <b-form-checkbox id="admin" v-model="checkboxes.admin" :value="true" :unchecked-value="false">Admin</b-form-checkbox>
+      <b-form-checkbox id="moderator" v-model="checkboxes.moderator" :value="true" :unchecked-value="false">Moderator</b-form-checkbox>
+      <b-form-checkbox id="student" v-model="checkboxes.student" :value="true" :unchecked-value="false">Student</b-form-checkbox>
+
       <br>
       <b-button type="submit" variant="primary">Submit</b-button>
     </b-form>
@@ -68,6 +68,11 @@
           admin: "false",
           moderator: "false",
           student: "false"
+        },
+        checkboxes:{
+          admin: '',
+          moderator: '',
+          student: ''
         }
       }
     },
@@ -80,8 +85,12 @@
       onSubmit(e) {
         e.preventDefault();
 
+        this.form.admin = this.checkboxes.admin.toString()
+        this.form.student = this.checkboxes.student.toString()
+        this.form.moderator = this.checkboxes.moderator.toString()
+
         this.register(this.form);
-         this.$router.push({ name: 'Home' }); 
+        // this.$router.push({ name: 'Home' });
       }
     }
   }

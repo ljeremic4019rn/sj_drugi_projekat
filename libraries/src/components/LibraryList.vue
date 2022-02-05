@@ -19,8 +19,6 @@
       aria-controls="image-table"
     ></b-pagination>
 
-
-
  </div>
 </template>
 

@@ -125,8 +125,10 @@ export default {
     onSubmit(e) {
       e.preventDefault();
       if (this.nameState && this.writerState && this.genreState && this.desciptionState && this.publisherState && this.userIdState){
-        this.updateBook(this.form);
-        this.$router.back();
+        // this.updateBook(this.form)
+        this.$socket.emit('updateBook', { body: this.form, token: this.token });
+
+        // this.$router.back();
       }
       else
         this.showDismissibleAlert = true

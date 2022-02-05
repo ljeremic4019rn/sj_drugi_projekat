@@ -117,10 +117,10 @@ export default {
       if (this.nameState && this.writerState && this.genreState && this.desciptionState && this.publisherState){
         this.form.libraryId = this.$route.params.id.toString()
         this.form.userId = this.loggedUserId.toString()
-        this.$socket.emit('addbook', { body: this.form, token: this.token });
+        // this.$socket.emit('addbook', { body: this.form, token: this.token });
 
-        // this.addBook(this.form);
-        // this.$router.back();
+        this.addBook(this.form);
+        this.$router.back();
       }
       else
         this.showDismissibleAlert = true
